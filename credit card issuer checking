@@ -1,0 +1,26 @@
+# credit card issuer checking
+
+function getIssuer(number) {
+    const arr = number.toString().split('');
+    var len = arr.length;
+    var first = arr.slice(0,1).join('');
+    var two = arr.slice(0,2).join('');
+    var four = arr.slice(0,4).join('');
+    console.log(arr);
+    console.log(len, first, two, four);
+    
+   if (len == 16){
+      if (four == 6011){
+          return 'Discover';
+    } else if (two < 56 && two > 50) {
+          return 'Mastercard';
+    } else if (first == 4) {
+          return 'VISA';
+    }
+  } if (len == 15 && two == 34 || two == 37) {
+      return 'AMEX';
+  } if (len == 13 && first == 4) {
+      return 'VISA';
+  }
+  else return 'Unknown';
+}
